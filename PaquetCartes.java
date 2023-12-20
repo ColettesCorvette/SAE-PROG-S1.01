@@ -14,14 +14,22 @@ public class PaquetCartes {
     }
 
     /**
-     * Constructeur d'un paquet à partir d'un paramètre
-     * @param paquet tableau de cartes
+     * Constructeur d'un paquet à partir d'un tableau d'entiers
+     * @param paquet tableau d'entiers
      */
     public PaquetCartes(int[] paquet) {
         this.cartes = new Carte[paquet.length];
         for (int i = 0; i < paquet.length; i++) {
             this.cartes[i] = new Carte(paquet[i]);
         }
+    }
+
+    /**
+     * Constructeur d'un paquet à partir d'un tableau de Cartes
+     * @param paquet tableau de cartes
+     */
+    public PaquetCartes(Carte[] paquet) {
+        this.cartes = paquet;
     }
 
     /**
