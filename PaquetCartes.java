@@ -1,20 +1,42 @@
 import java.util.Random;
 
 public class PaquetCartes {
+    /**
+     * attributs de la classe PaquetCartes : tableau de cartes
+     */
     private Carte[] cartes;
 
+    /**
+     * Constructeur par défaut d'un paquet vide. 
+     */
     public PaquetCartes() {
         this.cartes = new Carte[0];
     }
 
-    public PaquetCartes(Carte[] paquet) {
-        this.cartes = paquet;
+    /**
+     * Constructeur d'un paquet à partir d'un paramètre
+     * @param paquet tableau de cartes
+     */
+    public PaquetCartes(int[] paquet) {
+        this.cartes = new Carte[paquet.length];
+        for (int i = 0; i < paquet.length; i++) {
+            this.cartes[i] = new Carte(paquet[i]);
+        }
     }
 
+    /**
+     * Renvoie le nombre de cartes dans le paquet
+     * @return int, le nombre de cartes
+     */
     public int getNbCartes() {
         return this.cartes.length;
     }
 
+    /**
+     * Recupère la carte à la place donnée en paramètre
+     * @param place
+     * @return Carte, la carte à la place demandée
+     */
     public Carte getCarte(int place) {
         if (place < 0 || place > this.getNbCartes() - 1) {
             return null;
@@ -23,6 +45,10 @@ public class PaquetCartes {
         }
     }
 
+    /**
+     * récupère la dernière carte du paquet 
+     * @return Carte, la dernière carte du paquet
+     */
     public Carte getDerniereCarte() {
         if (this.etreVide()) {
             return null;
@@ -31,10 +57,18 @@ public class PaquetCartes {
         }
     }
 
+    /**
+     * teste si le paquet est vide
+     * @return boolean, vrai si le paquet est vide
+     */
     public boolean etreVide() {
         return (getNbCartes() == 0);
     }
 
+    /**
+     * Ajoute une carte à la fin du paquet
+     * @param nvlCarte Carte à ajouter
+     */
     public void ajouterCarteFin(Carte nvlCarte) {
         int n = this.getNbCartes();
         Carte[] tempCartes = new Carte[n+1];
@@ -45,6 +79,11 @@ public class PaquetCartes {
         this.cartes = tempCartes;
     }
 
+    /**
+     * Retire la carte à la place donnée en paramètre
+     * @param place
+     * @return Carte retirée
+     */
     public Carte retirerCarte(int place) {
         if (place < 0 || place > this.getNbCartes() - 1) {
             return null;
@@ -66,14 +105,22 @@ public class PaquetCartes {
         }
     }
 
+    /**
+     * Renvoie le paquet de cartes sous forme textuelle
+     * @return String, le paquet de cartes 
+     */
     public String toString() {
         String res = "";
         for (int i = 0; i < this.getNbCartes(); i++) {
-            res += i + "-" + this.cartes[i] + "\n";
+            res += i + "-" + this.cartes[i] + "  ";
         }
         return res;
     }
 
+    /**
+     * créée un paquet de cartes allant de 2 à max - 1
+     * @param max le numéro de la plus grande carte (exclue)
+     */
     public void remplir(int max) {
         Carte[] tab = new Carte[max - 2];
         for (int i = 0; i < tab.length; i++) {
@@ -82,12 +129,19 @@ public class PaquetCartes {
         this.cartes = tab;
     }
 
+    /**
+     * Pioche une carte au hasard dans la pile, fonction utilisée seulement dans melangerPaquet()
+     * @return Carte
+     */
     private Carte piocherHasard() {
         Random r = new Random();
         int i = r.nextInt(getNbCartes());
         return this.retirerCarte(i);
     }
 
+    /**
+     * Mélange le paquet de manière aléatoire
+     */
     public void melangerPaquet() {
         Carte[] tab = new Carte[this.getNbCartes()];
         for (int i = 0; i < this.getNbCartes(); i++) {
@@ -96,6 +150,10 @@ public class PaquetCartes {
         this.cartes = tab;
     }
 
+    /**
+     * Prend la carte en haut du paquet et la retire de celui-ci
+     * @return carte récuperée
+     */
     public Carte prendreCarteDessus() {
         if (etreVide()) {
             return null;
@@ -104,6 +162,10 @@ public class PaquetCartes {
         }
     }
 
+    /**
+     * insère une carte au bon endroit dans un paquet trié de manière croissante. 
+     * @param c
+     */
     public void insererTri(Carte c) {
         Carte[] tab = new Carte[this.getNbCartes() + 1];
         boolean insere = false;
