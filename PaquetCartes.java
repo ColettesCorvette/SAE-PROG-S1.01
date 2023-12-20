@@ -103,4 +103,23 @@ public class PaquetCartes {
             return this.retirerCarte(0);
         }
     }
+
+    public void insererTri(Carte c) {
+        Carte[] tab = new Carte[this.getNbCartes() + 1];
+        boolean insere = false;
+        int i = 0;
+        while (! insere && i < this.getNbCartes()) {
+            if (c.etrePlusGrand(this.cartes[i])) {
+                tab[i] = this.cartes[i];
+            } else {
+                tab[i] = c;
+                insere = true;
+            }
+            i++;
+        }
+        for (int j = i; j < tab.length; j++) {
+            tab[j] = this.cartes[j - 1];
+        }
+        this.cartes = tab;
+    }
 }
