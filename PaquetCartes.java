@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class PaquetCartes {
     private Carte[] cartes;
 
@@ -25,12 +27,12 @@ public class PaquetCartes {
         if (this.etreVide()) {
             return null;
         } else {
-            return this.cartes[this.cartes.length - 1];
+            return this.cartes[getNbCartes() - 1];
         }
     }
 
     public boolean etreVide() {
-        return (this.cartes.length == 0);
+        return (getNbCartes() == 0);
     }
 
     public void ajouterCarteFin(Carte nvlCarte) {
@@ -65,11 +67,10 @@ public class PaquetCartes {
     }
 
     public String toString() {
-        String res = "––––––––––––––––––––––––––––––––––\n";
+        String res = "";
         for (int i = 0; i < this.getNbCartes(); i++) {
-            res += i + ". " + this.cartes[i] + "\n";
+            res += i + "-" + this.cartes[i] + "\n";
         }
-        res += "––––––––––––––––––––––––––––––––––";
         return res;
     }
 
@@ -79,5 +80,27 @@ public class PaquetCartes {
             tab[i] = new Carte(i + 2);
         }
         this.cartes = tab;
+    }
+
+    private Carte piocherHasard() {
+        Random r = new Random();
+        int i = r.nextInt(getNbCartes());
+        return this.retirerCarte(i);
+    }
+
+    public void melangerPaquet() {
+        Carte[] tab = new Carte[this.getNbCartes()];
+        for (int i = 0; i < this.getNbCartes(); i++) {
+            tab[i] = piocherHasard();
+        }
+        this.cartes = tab;
+    }
+
+    public Carte prendreCarteDessus() {
+        if (etreVide()) {
+            return null;
+        } else {
+            return this.retirerCarte(0);
+        }
     }
 }
