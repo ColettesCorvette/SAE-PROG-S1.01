@@ -1,6 +1,10 @@
 public class PaquetCartes {
     private Carte[] cartes;
 
+    public PaquetCartes() {
+        this.cartes = new Carte[0];
+    }
+
     public PaquetCartes(Carte[] paquet) {
         this.cartes = paquet;
     }
@@ -15,6 +19,18 @@ public class PaquetCartes {
         } else {
             return this.cartes[place];
         }
+    }
+
+    public Carte getDerniereCarte() {
+        if (this.etreVide()) {
+            return null;
+        } else {
+            return this.cartes[this.cartes.length - 1];
+        }
+    }
+
+    public boolean etreVide() {
+        return (this.cartes.length == 0);
     }
 
     public void ajouterCarteFin(Carte nvlCarte) {
@@ -62,5 +78,6 @@ public class PaquetCartes {
         for (int i = 0; i < tab.length; i++) {
             tab[i] = new Carte(i + 2);
         }
+        this.cartes = tab;
     }
 }
