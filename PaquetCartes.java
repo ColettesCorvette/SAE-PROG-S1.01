@@ -1,10 +1,6 @@
 public class PaquetCartes {
     private Carte[] cartes;
 
-    public PaquetCartes() {
-        this.cartes = new Carte[0];
-    }
-
     public PaquetCartes(Carte[] paquet) {
         this.cartes = paquet;
     }
@@ -59,5 +55,12 @@ public class PaquetCartes {
         }
         res += "––––––––––––––––––––––––––––––––––";
         return res;
+    }
+
+    public void remplir(int max) {
+        Carte[] tab = new Carte[max - 2];
+        for (int i = 0; i < tab.length; i++) {
+            tab[i] = new Carte(i + 2);
+        }
     }
 }
