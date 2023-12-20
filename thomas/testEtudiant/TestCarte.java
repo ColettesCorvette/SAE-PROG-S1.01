@@ -55,7 +55,26 @@ public class TestCarte {
 
     }
 
-    public void test_3_verifieMoins10_1(){
+    public void test_3_verifiePlusPetit(){
+
+        /*
+         * Preparation des donnees
+         */
+
+        Carte c = new Carte(3);
+        Carte c1 = new Carte(3);
+
+        boolean res = c.etrePlusGrand(c1);
+
+        /*
+         * On teste l'egalite des valeurs
+         */
+
+         assertEquals("les cartes ne doivent pas etre egale", false, res);
+
+    }
+
+    public void test_4_verifieMoins10_1(){
 
         /*
          * Preparation des donnees
@@ -67,13 +86,13 @@ public class TestCarte {
         boolean res = c.avoirDiffDe10(c1);
 
         /*
-         * On verifie s'il y a un ecart de 10 par rapport a la carte c
+         * On verifie s'il y a un ecart de 10 par rapport a la carte c1
          */
         assertEquals("La difference n'est pas de 10", false, res);
 
     }
 
-    public void test_4_verifieMoins10_2(){
+    public void test_5_verifieMoins10_2(){
 
         /*
          * Preparation des donnees
@@ -84,11 +103,14 @@ public class TestCarte {
 
         boolean res = c.avoirDiffDe10(c1);
 
+        /*
+         * On verifie s'il y a un ecart de 10 par rapport a la carte c
+         */
         assertEquals("La difference n'est pas de 10", false, res);
 
     }
 
-     public void test_5_verifiePlus10(){
+     public void test_6_verifieMoins10(){
 
         /*
          * Preparation des donnees
@@ -99,11 +121,14 @@ public class TestCarte {
 
         boolean res = c.avoirDiffDe10(c1);
 
+        /*
+         * On teste si la mehode renvoie true lorsque la difference est de -10
+         */
         assertEquals("La difference n'est pas de 10", true, res);
 
     }
 
-     public void test_6_verifieMoins10(){
+     public void test_7_verifiePlus10(){
 
         /*
          * Preparation des donnees
@@ -114,13 +139,29 @@ public class TestCarte {
 
         boolean res = c.avoirDiffDe10(c1);
 
+        /*
+         * On teste si la mehode renvoie true lorsque la difference est de +10
+         */
         assertEquals("La difference n'est pas de 10", true, res);
 
     }
 
-    public void test_7_String(){
+    public void test_8_egales(){
+
+        Carte c = new Carte(10);
+        Carte c1 = new Carte(10);
+
+        boolean res = c.avoirDiffDe10(c1);
+
+        //test l'egalite des valeurs  
+        assertEquals("les cartes ne doivent pas être egales", false, res);
+
+    }
+
+    public void test_9_String(){
         Carte c = new Carte(2);
 
+        //test de la methode d'affichage toString
         assertEquals("n'affiche pas le bon format","c2",c.toString());
         
     }
@@ -133,4 +174,5 @@ public class TestCarte {
     {
         lancer(new TestCarte(),args);
     }
+    
 }
