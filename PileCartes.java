@@ -28,7 +28,7 @@ public class PileCartes {
      * @param c Carte à ajouter
      * @return boolean, vrai si il est possible d'ajouter la carte
      */
-    public boolean etrePosasble(Carte c) {
+    public boolean etrePosable(Carte c) {
         boolean posable = false;
         if ((this.croissant && c.etrePlusGrand(paquet.getDerniereCarte())) || 
             (! this.croissant && ! c.etrePlusGrand(paquet.getDerniereCarte())) || 
@@ -45,7 +45,7 @@ public class PileCartes {
      */
     public boolean poserCarte(Carte c) {
         boolean posee = false;
-        if (etrePosasble(c)) {
+        if (etrePosable(c)) {
             this.paquet.ajouterCarteFin(c);
             posee = true;
         } 
@@ -67,5 +67,13 @@ public class PileCartes {
         res += "-" + this.paquet.getDerniereCarte();
         res += "-" + this.paquet.getNbCartes();
         return res;
+    }
+
+    /**
+     * renvoie la dernière carte de la pile
+     * @return Carte, dernière carte de la pile
+     */
+    public Carte getDerniereCarte() {
+        return this.paquet.getDerniereCarte();
     }
 }
