@@ -119,9 +119,10 @@ public class PaquetCartes {
      */
     public String toString() {
         String res = "";
-        for (int i = 0; i < this.getNbCartes(); i++) {
+        for (int i = 0; i < this.getNbCartes() - 1; i++) {
             res += i + "-" + this.cartes[i] + "  ";
         }
+        res += this.getNbCartes() + "-" + this.getDerniereCarte();
         return res;
     }
 
@@ -187,8 +188,13 @@ public class PaquetCartes {
             }
             i++;
         }
+        
         for (int j = i; j < tab.length; j++) {
             tab[j] = this.cartes[j - 1];
+        }
+
+        if (! insere) {
+            tab[tab.length] = c;
         }
         this.cartes = tab;
     }
