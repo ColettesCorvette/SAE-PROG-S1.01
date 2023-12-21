@@ -29,17 +29,19 @@ class Carte{
     }
 
     public boolean etrePlusGrand(Carte c) {
+        boolean plusGrand = false;
         if (this.valeur > c.valeur) {
-            return true;
+            plusGrand = true;
         }
-        return false;
+        return plusGrand;
     }
 
     public boolean avoirDiffDe10(Carte c) {
+        boolean diff10 = false;
         if (c.valeur + 10 == this.valeur || c.valeur - 10 == this.valeur) {
-            return true;
+            diff10 = true;
         }
-        return false;
+        return diff10;
     }
 
 }
