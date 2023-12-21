@@ -179,7 +179,7 @@ public class PaquetCartes {
         Carte[] tab = new Carte[this.getNbCartes() + 1];
         boolean insere = false;
         int i = 0;
-        while (! insere && i < this.getNbCartes()) {
+        while (! insere && i < this.getNbCartes() - 1) {
             if (c.etrePlusGrand(this.cartes[i])) {
                 tab[i] = this.cartes[i];
             } else {
