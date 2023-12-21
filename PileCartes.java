@@ -31,11 +31,41 @@ public class PileCartes {
     public boolean etrePosasble(Carte c) {
         boolean posable = false;
         if ((this.croissant && c.etrePlusGrand(paquet.getDerniereCarte())) || 
-            (! this.croissant && ! c.etrePlusGrand(paquet.getDerniereCarte()))) {
+            (! this.croissant && ! c.etrePlusGrand(paquet.getDerniereCarte())) || 
+            (c.avoirDiffDe10(this.paquet.getDerniereCarte()))) {
                 posable = true;
         }
         return posable;
     }
 
-    
+    /**
+     * Pose la carte sur la pile et renvoie vrai si c'est possible
+     * @param c Carte à ajouter sur la pile
+     * @return boolean, vrai si la carte a pu être ajoutée
+     */
+    public boolean poserCarte(Carte c) {
+        boolean posee = false;
+        if (etrePosasble(c)) {
+            this.paquet.ajouterCarteFin(c);
+            posee = true;
+        } 
+        return posee;
+    }
+
+    /**
+     * Permet d'afficher la pile de manière textuelle
+     * @return String, affichage de la pile
+     */
+    public String toString() {
+        String res = "";
+        if (this.croissant) {
+            res += "c";
+        } else {
+            res += "c";
+        }
+        //"c-c15-(4)"
+        res += "-" + this.paquet.getDerniereCarte();
+        res += "-" + this.paquet.getNbCartes();
+        return res;
+    }
 }
