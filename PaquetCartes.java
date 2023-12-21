@@ -61,7 +61,7 @@ public class PaquetCartes {
         if (this.etreVide()) {
             return null;
         } else {
-            return this.cartes[getNbCartes() - 1];
+            return this.cartes[this.getNbCartes() - 1];
         }
     }
 
@@ -70,7 +70,7 @@ public class PaquetCartes {
      * @return boolean, vrai si le paquet est vide
      */
     public boolean etreVide() {
-        return (getNbCartes() == 0);
+        return (this.getNbCartes() == 0);
     }
 
     /**
@@ -143,7 +143,7 @@ public class PaquetCartes {
      */
     private Carte piocherHasard() {
         Random r = new Random();
-        int i = r.nextInt(getNbCartes());
+        int i = r.nextInt(this.getNbCartes());
         return this.retirerCarte(i);
     }
 
