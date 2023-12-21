@@ -194,7 +194,7 @@ public class PaquetCartes {
         }
 
         if (! insere) {
-            tab[tab.length] = c;
+            tab[tab.length - 1] = c;
         }
         this.cartes = tab;
     }
