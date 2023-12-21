@@ -177,25 +177,31 @@ public class PaquetCartes {
      */
     public void insererTri(Carte c) {
         Carte[] tab = new Carte[this.getNbCartes() + 1];
-        boolean insere = false;
-        int i = 0;
-        while (! insere && i < this.getNbCartes() - 1) {
-            if (c.etrePlusGrand(this.cartes[i])) {
-                tab[i] = this.cartes[i];
-            } else {
-                tab[i] = c;
-                insere = true;
-            }
-            i++;
-        }
         
-        for (int j = i; j < tab.length; j++) {
-            tab[j] = this.cartes[j - 1];
+        if (this.getNbCartes() != 0) {
+            boolean insere = false;
+            int i = 0;
+            while (! insere && i < this.getNbCartes() - 1) {
+                if (c.etrePlusGrand(this.cartes[i])) {
+                    tab[i] = this.cartes[i];
+                } else {
+                    tab[i] = c;
+                    insere = true;
+                }
+                i++;
+            }
+            
+            for (int j = i; j < tab.length; j++) {
+                tab[j] = this.cartes[j - 1];
+            }
+
+            if (! insere) {
+                tab[tab.length - 1] = c;
+            }
+        } else {
+            tab[0] = c;
         }
 
-        if (! insere) {
-            tab[tab.length - 1] = c;
-        }
         this.cartes = tab;
     }
 }
