@@ -46,11 +46,11 @@ public class PaquetCartes {
      * @return Carte, la carte à la place demandée
      */
     public Carte getCarte(int place) {
-        if (place < 0 || place > this.getNbCartes() - 1) {
-            return null;
-        } else {
-            return this.cartes[place];
+        Carte c = null;
+        if (! (place < 0 || place > this.getNbCartes() - 1)) {
+            c = this.cartes[place];
         }
+        return c;
     }
 
     /**
@@ -58,11 +58,11 @@ public class PaquetCartes {
      * @return Carte, la dernière carte du paquet
      */
     public Carte getDerniereCarte() {
-        if (this.etreVide()) {
-            return null;
-        } else {
-            return this.cartes[this.getNbCartes() - 1];
+        Carte c = null;
+        if (! this.etreVide()) {
+            c = this.cartes[this.getNbCartes() - 1];
         }
+        return c;
     }
 
     /**
@@ -93,9 +93,8 @@ public class PaquetCartes {
      * @return Carte retirée
      */
     public Carte retirerCarte(int place) {
-        if (place < 0 || place > this.getNbCartes() - 1) {
-            return null;
-        } else {
+        Carte c = null;
+        if (! (place < 0 || place > this.getNbCartes() - 1)) {
             int n = this.getNbCartes();
             Carte carteSup = this.cartes[place];
             Carte[] tempCartes = new Carte[n - 1];
@@ -109,8 +108,9 @@ public class PaquetCartes {
             }
 
             this.cartes = tempCartes;
-            return carteSup;
+            c = carteSup;
         }
+        return c;
     }
 
     /**
@@ -164,11 +164,11 @@ public class PaquetCartes {
      * @return carte récuperée
      */
     public Carte prendreCarteDessus() {
-        if (this.etreVide()) {
-            return null;
-        } else {
-            return this.retirerCarte(0);
+        Carte c = null;
+        if (! this.etreVide()) {
+            c = this.retirerCarte(0);
         }
+        return c;
     }
 
     /**
