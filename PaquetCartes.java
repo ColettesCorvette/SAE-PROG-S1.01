@@ -153,7 +153,7 @@ public class PaquetCartes {
     public void melangerPaquet() {
         Carte[] tab = new Carte[this.getNbCartes()];
         for (int i = 0; i < this.getNbCartes(); i++) {
-            tab[i] = piocherHasard();
+            tab[i] = this.piocherHasard();
         }
         this.cartes = tab;
     }
@@ -163,7 +163,7 @@ public class PaquetCartes {
      * @return carte récuperée
      */
     public Carte prendreCarteDessus() {
-        if (etreVide()) {
+        if (this.etreVide()) {
             return null;
         } else {
             return this.retirerCarte(0);
