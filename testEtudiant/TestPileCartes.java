@@ -1,4 +1,5 @@
 import static libtest.Lanceur.lancer;
+import static libtest.OutilTest.*;
 
 public class TestPileCartes {
 
